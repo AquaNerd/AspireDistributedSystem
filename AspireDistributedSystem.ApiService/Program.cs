@@ -9,6 +9,9 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+// Add Controllers for api
+builder.Services.AddControllers();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -25,7 +28,11 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+// Add Minimal Api Routes
 app.AddWeatherForecastEndpoints();
+
+// Add Controller Api Routes
+app.MapControllers();
 
 app.MapDefaultEndpoints();
 
