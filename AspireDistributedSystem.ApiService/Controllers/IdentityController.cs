@@ -43,6 +43,7 @@ public class IdentityController : ControllerBase
             };
 
             var claim = new Claim(claimPair.Key, claimPair.Value.ToString()!, valueType);
+            claims.Add(claim);
         }
 
         var tokenDescriptor = new SecurityTokenDescriptor
@@ -51,7 +52,7 @@ public class IdentityController : ControllerBase
             Expires = DateTime.UtcNow.Add(TokenLifetime),
             Issuer = "https://localhost:7322",
             Audience = "https://localhost:7216",
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
 
         var token = tokenHandler.CreateToken(tokenDescriptor);

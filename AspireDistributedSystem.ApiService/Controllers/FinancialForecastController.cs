@@ -1,4 +1,6 @@
-﻿using AspireDistributedSystem.ApiService.Controllers.Abstractions;
+﻿using AspireDistributedSystem.ApiService.Auth;
+using AspireDistributedSystem.ApiService.Controllers.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspireDistributedSystem.ApiService.Controllers;
@@ -21,18 +23,21 @@ public class FinancialForecastController : BaseApiController
 
     // POST api/<FinancialForecastController>
     [HttpPost]
+    [Authorize(Policy = IdentityData.AdminUserPolicyName)]
     public void Post([FromBody] string value)
     {
     }
 
     // PUT api/<FinancialForecastController>/5
     [HttpPut("{id}")]
+    [Authorize(Policy = IdentityData.AdminUserPolicyName)]
     public void Put(int id, [FromBody] string value)
     {
     }
 
     // DELETE api/<FinancialForecastController>/5
     [HttpDelete("{id}")]
+    [Authorize(Policy = IdentityData.AdminUserPolicyName)]
     public void Delete(int id)
     {
     }

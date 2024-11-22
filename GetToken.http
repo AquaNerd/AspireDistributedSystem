@@ -1,0 +1,14 @@
+@contentType = application/json
+
+### Get Access Token:
+# @name authPasswordRequest
+POST {{HostAddress}}/api/Identity/token 
+Content-Type: {{contentType}}
+
+{
+    "userid": "c6090e7a-bbd6-4a66-80a4-767f9852f60a",
+    "email": "dan.umstattd@gmail.com",
+    "customClaims": {
+        "admin": true
+    }
+}

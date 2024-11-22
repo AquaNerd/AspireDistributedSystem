@@ -1,3 +1,4 @@
+using AspireDistributedSystem.ApiService.Auth;
 using AspireDistributedSystem.ApiService.Endpoints;
 using AspireDistributedSystem.ApiService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -30,8 +31,18 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-// Authorization
-builder.Services.AddAuthorization();
+// Add Authorization
+// for controllers
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(IdentityData.AdminUserPolicyName, p => p.RequireClaim(IdentityData.AdminUserClaimName, "true"));
+});
+// for minimal apis
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy(IdentityData.AdminUserPolicyName, policy =>
+    {
+        policy.RequireClaim("admin", "true");
+    });
 
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();

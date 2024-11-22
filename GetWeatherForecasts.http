@@ -1,0 +1,4 @@
+### Get Weather Forecasts:
+# @name weatherForecastsRequest
+GET {{HostAddress}}/api/WeatherForecast
+Authorization: Bearer {{AccessToken}}

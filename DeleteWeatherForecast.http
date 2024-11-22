@@ -1,0 +1,4 @@
+### Delete Weather Forecast 1:
+# @name weatherForecastsRequest
+DELETE {{HostAddress}}/api/WeatherForecast/1
+Authorization: Bearer {{AccessToken}}

@@ -1,0 +1,4 @@
+### Get Financial Forecasts:
+# @name financialForecastsRequest
+GET {{HostAddress}}/api/FinancialForecast
+Authorization: Bearer {{AccessToken}}

@@ -1,0 +1,4 @@
+### Delete Financial Forecast 1:
+# @name financialForecastsRequest
+DELETE {{HostAddress}}/api/FinancialForecast/1
+Authorization: Bearer {{AccessToken}}
