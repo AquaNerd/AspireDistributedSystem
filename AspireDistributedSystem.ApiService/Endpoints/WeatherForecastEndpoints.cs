@@ -7,8 +7,10 @@ public static class WeatherForecastEndpoints
 
     public static void AddWeatherForecastEndpoints(this WebApplication app)
     {
-        app.MapGet("/api/weatherforecast", (IWeatherService weatherService) => weatherService.GetWeatherForecast())
-            .WithName("GetWeatherForecast")
+        var weatherForecastGroup = app.MapGroup("/api/weatherforecast");
+
+        weatherForecastGroup.MapGet("/", (IWeatherService weatherService) => weatherService.GetWeatherForecast())
+            .WithName("Get Weather Forecasts")
             .WithSummary("Will return a collection of Weather Forecasts");
     }
 
